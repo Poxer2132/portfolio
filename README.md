@@ -1,5 +1,5 @@
-**Moje Projekty IT
-**
+**Moje Projekty IT**
+
 Witaj,
 To repozytorium prezentuje moje projekty informatyczne oraz doświadczenie zdobyte podczas praktyk w trakcie nauki w technikum informatycznym. Projekty te ilustrują moje umiejętności w obszarach administracji systemami, sieci komputerowych oraz wirtualizacji.
 
