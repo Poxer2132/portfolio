@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Infrastruktura Sieciowa dla Małej Organizacji - Michał Zalewski</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .project-detail {
+      padding: 60px 20px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .project-detail img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin-top: 10px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .project-detail h3 {
+      color: #0d47a1;
+      margin-top: 30px;
+      margin-bottom: 10px;
+    }
+    .project-detail p, .project-detail li {
+      color: #555;
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
+    .project-detail a {
+      color: #0d47a1;
+      font-weight: bold;
+    }
+    .image-caption {
+      font-size: 14px;
+      color: #777;
+      text-align: center;
+      margin-top: -10px;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Sieć dla Rodzinnego Domu Dziecka</h1>
+    <p>Wdrożenie i utrzymanie profesjonalnej infrastruktury IT</p>
+    <nav>
+      <a href="index.html">Powrót do strony głównej</a>
+    </nav>
+  </header>
+
+  <main class="project-detail">
+    <section id="opis">
+      <h2>Wprowadzenie i Cel Projektu</h2>
+      <p>
+        Projekt obejmował zaprojektowanie, wdrożenie od zera i utrzymanie niezawodnej infrastruktury sieciowej dla rodzinnego domu dziecka, obsługującej codzienne potrzeby ponad 10 mieszkańców. Głównym celem było zapewnienie stabilnego, bezpiecznego i monitorowanego dostępu do Internetu, z uwzględnieniem szczególnych wymagań dotyczących ochrony użytkowników nieletnich.
+      </p>
+    </section>
+
+    <section id="wyzwania">
+      <h3>Główne Wyzwania</h3>
+      <ul>
+        <li><b>Brak infrastruktury:</b> Potrzeba zbudowania całej sieci od podstaw w sposób skalowalny i zarządzalny.</li>
+        <li><b>Niezawodność:</b> Zapewnienie ciągłości dostępu do Internetu dla wielu użytkowników jednocześnie korzystających z sieci do nauki i pracy zdalnej.</li>
+        <li><b>Bezpieczeństwo:</b> Konieczność ochrony użytkowników, w tym dzieci, przed zagrożeniami z Internetu oraz wdrożenie mechanizmów kontroli dostępu.</li>
+        <li><b>Zarządzanie:</b> Uproszczenie administracji siecią i umożliwienie zdalnego wsparcia technicznego.</li>
+      </ul>
+    </section>
+
+    <section id="topologia">
+      <h3>Architektura Rozwiązania</h3>
+      <p>
+        Poniższy diagram przedstawia architekturę wdrożonego rozwiązania. Sercem sieci jest zwirtualizowany na serwerze Proxmox router pfSense, który pełni rolę centralnego punktu zarządzania ruchem, bezpieczeństwem i usługami DHCP. Punkty dostępowe Wi-Fi działają w trybie bridge, zapewniając jednorodną i spójną sieć dla wszystkich urządzeń.
+      </p>
+      <img src="assets/Topologia_Domu.png" alt="Diagram architektury sieci">
+      <p class="image-caption">Diagram finalnej topologii sieci wdrożonej w organizacji.</p>
+    </section>
+
+    <section id="konfiguracja">
+      <h3>Kluczowe Elementy Konfiguracji</h3>
+      <p>
+        Poniższe zrzuty ekranu ilustrują najważniejsze aspekty konfiguracji, które pozwoliły zrealizować cele projektu.
+      </p>
+
+      <h4>1. Centralny Serwer DHCP na pfSense</h4>
+      <img src="assets/DHCP dowod.png" alt="Konfiguracja serwera DHCP w pfSense">
+      <p class="image-caption">
+        Uruchomienie jedynego, centralnego serwera DHCP w sieci, co eliminuje konflikty adresów i upraszcza zarządzanie.
+      </p>
+
+      <h4>2. Statyczne Rezerwacje dla Urządzeń Kluczowych</h4>
+      <img src="assets/dhcp static.png" alt="Statyczne rezerwacje adresów IP">
+      <p class="image-caption">
+        Przypisanie stałych adresów IP dla krytycznych elementów infrastruktury, co ułatwia monitoring i tworzenie reguł firewalla.
+      </p>
+
+      <h4>3. Konfiguracja Punktu Dostępowego w Trybie Bridge</h4>
+      <img src="assets/192.168.30.3 ruter.png" alt="Konfiguracja Access Pointa">
+      <p class="image-caption">
+        Panel jednego z punktów dostępowych, pokazujący wyłączony serwer DHCP. Urządzenie działa jako przezroczysty most, przekazując zarządzanie adresacją do centralnego routera pfSense.
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    &copy; 2026 Michał Zalewski. Wszelkie prawa zastrzeżone.
+  </footer>
+
+</body>
+</html>
