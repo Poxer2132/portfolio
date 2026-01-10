@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projekt HomeLab z Proxmox - Michał Zalewski</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .project-detail {
+      padding: 60px 20px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .project-detail img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin-top: 10px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .project-detail h3 {
+      color: #0d47a1;
+      margin-top: 30px;
+      margin-bottom: 10px;
+    }
+    .project-detail p {
+      color: #555;
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
+    .project-detail a {
+      color: #0d47a1;
+      font-weight: bold;
+    }
+    .image-caption {
+      font-size: 14px;
+      color: #777;
+      text-align: center;
+      margin-top: -10px;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Projekt HomeLab (Proxmox VE)</h1>
+    <p>Wirtualizacja, serwer NAS i zdalny dostęp</p>
+    <nav>
+      <a href="index.html">Powrót do strony głównej</a>
+    </nav>
+  </header>
+
+  <main class="project-detail">
+    <section id="opis">
+      <h2>Cel Projektu</h2>
+      <p>
+        Celem projektu było zbudowanie w pełni funkcjonalnego, domowego laboratorium (HomeLab) przy użyciu Proxmox VE. Projekt zakładał stworzenie elastycznego środowiska do testowania różnych systemów operacyjnych i usług sieciowych, w tym wdrożenie serwera NAS (TrueNAS) do centralnego przechowywania danych oraz konfigurację bezpiecznego dostępu zdalnego.
+      </p>
+    </section>
+
+    <section id="proxmox">
+      <h3>1. Środowisko Wirtualizacyjne Proxmox</h3>
+      <p>
+        Sercem całego laboratorium jest serwer z zainstalowanym Proxmox VE. Pozwala on na łatwe tworzenie i zarządzanie maszynami wirtualnymi (VM) oraz kontenerami (LXC). Poniższy zrzut ekranu przedstawia główne podsumowanie węzła Proxmox, widoczne są na nim kluczowe maszyny wirtualne, w tym `pfSense` (router) oraz `TrueNAS` (serwer plików).
+      </p>
+      <img src="assets/proxmox pokazanie summary.png" alt="Podsumowanie serwera Proxmox">
+      <p class="image-caption">
+        Główny panel Proxmox VE z listą maszyn wirtualnych i statystykami serwera.
+      </p>
+    </section>
+
+    <section id="truenas">
+      <h3>2. Serwer Plików TrueNAS</h3>
+      <p>
+        Do centralnego magazynowania danych, tworzenia kopii zapasowych i udostępniania plików w sieci lokalnej wykorzystałem system TrueNAS, uruchomiony jako maszyna wirtualna w Proxmox.
+      </p>
+
+      <h4>Konfiguracja Sieciowa i Udostępnianie</h4>
+      <img src="assets/truenas ip interface.png" alt="Interfejs sieciowy TrueNAS">
+      <p class="image-caption">
+        Konfiguracja interfejsu sieciowego maszyny wirtualnej TrueNAS ze stałym adresem IP w sieci lokalnej.
+      </p>
+
+      <img src="assets/Truenas udostepnione dyski .png" alt="Udostępnione dyski w TrueNAS">
+      <p class="image-caption">
+        Panel pokazujący udziały sieciowe (SMB/CIFS) skonfigurowane w TrueNAS, dostępne dla wszystkich urządzeń w sieci domowej.
+      </p>
+    </section>
+    
+    <section id="vpn">
+      <h3>3. Bezpieczny Zdalny Dostęp z Tailscale</h3>
+      <p>
+        Aby mieć bezpieczny dostęp do zasobów mojego HomeLabu z dowolnego miejsca na świecie, skonfigurowałem sieć VPN opartą na Tailscale. Aplikacja Tailscale została zainstalowana bezpośrednio w systemie TrueNAS, co pozwala na zdalny dostęp do panelu zarządzania i udostępnionych plików.
+      </p>
+      <img src="assets/truenas vpn app .png" alt="Aplikacja Tailscale w TrueNAS">
+      <p class="image-caption">
+        Instalacja aplikacji Tailscale jako usługi wewnątrz systemu TrueNAS.
+      </p>
+      <img src="assets/vpn status .png" alt="Status połączenia VPN">
+      <p class="image-caption">
+        Potwierdzenie statusu połączenia VPN. Serwer jest widoczny w mojej prywatnej sieci Tailscale pod unikalnym adresem IP.
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    &copy; 2026 Michał Zalewski. Wszelkie prawa zastrzeżone.
+  </footer>
+
+</body>
+</html>

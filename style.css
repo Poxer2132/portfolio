@@ -75,6 +75,8 @@
 
   .project:hover {
     transform: translateY(-5px);
+    background-color: #cce4fa;
+
   }
 
   .project h3 {
@@ -85,6 +87,14 @@
   .project p {
     color: #555;
     font-size: 14px;
+  }
+  .project a:hover {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 5px 15px;
+    color: white;
+    border-radius: 6px;
+    transition: 0.3s;
   }
 
   .skills {
